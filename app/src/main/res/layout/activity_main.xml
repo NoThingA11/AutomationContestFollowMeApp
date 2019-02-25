@@ -9,6 +9,8 @@
 
     <com.medialablk.easygifview.EasyGifView
         android:id="@+id/gifEye"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="450dp" />
 
