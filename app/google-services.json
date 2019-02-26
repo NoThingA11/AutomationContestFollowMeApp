@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "245989564747",
+    "firebase_url": "https://jinpaoautomationcontest.firebaseio.com",
+    "project_id": "jinpaoautomationcontest",
+    "storage_bucket": "jinpaoautomationcontest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245989564747:android:9ae449b8b2486b0d",
+        "android_client_info": {
+          "package_name": "com.sitthinon.jinpaoautomationcontest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245989564747-qun892u9itokf7417b81j15ddskvn7sd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitthinon.jinpaoautomationcontest",
+            "certificate_hash": "4020b7f693dcb79ce959a668388c10f6a829a5c8"
+          }
+        },
+        {
+          "client_id": "245989564747-upl1vfb4enlvkphfok00auript6l29m9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkfDE-6BxKBAOjkh3x4irvht8wEqHbqac"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245989564747-upl1vfb4enlvkphfok00auript6l29m9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

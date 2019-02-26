@@ -9,15 +9,15 @@
 
     <com.medialablk.easygifview.EasyGifView
         android:id="@+id/gifEye"
-        android:layout_gravity="center"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="450dp" />
+        android:layout_height="wrap_content" />
 
     <com.medialablk.easygifview.EasyGifView
         android:id="@+id/gifMouth"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="350dp" />
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
