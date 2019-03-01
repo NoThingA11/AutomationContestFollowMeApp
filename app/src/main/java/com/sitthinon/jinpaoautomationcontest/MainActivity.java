@@ -1,6 +1,7 @@
 package com.sitthinon.jinpaoautomationcontest;
 
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.medialablk.easygifview.EasyGifView;
 
 import java.util.Locale;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     private TextToSpeech tts;
-    public EasyGifView gifEye,gifMouth;
+    public EasyGifView gifEye,gifMouth,gifMouthMove;
     public DatabaseReference FollowMeDatabase;
 
 
@@ -38,48 +40,96 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_main);
 
+
+
+//        Set up Gif
+        gifEye = findViewById(R.id.gifEye);
+        gifMouth = findViewById(R.id.gifMouth);
+        gifMouthMove = findViewById(R.id.gifMouthMove);
+        gifEye.setGifFromResource(R.drawable.eyeblink);
+        gifMouth.setGifFromResource(R.drawable.mouth3);
+        gifMouthMove.setGifFromResource(R.drawable.audiowave2);
+
+        gifEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+            }
+        });
+
+//        Run Normal Gif Face
+        runNormalGifFace();
+
 //        Define Text to speak
         tts = new TextToSpeech(this, this,"com.google.android.tts");
         tts.setLanguage(Locale.ENGLISH);
         tts.speak("Welcome to jinpao automation contest two thousand nineteen", TextToSpeech.QUEUE_ADD, null);
 
-
-//        Run Normal Gif Face
-        runNormalGifFace();
-
-        FollowMeDatabase.child("SpeakCommand").addValueEventListener(new ValueEventListener() {
+        FollowMeDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tts.setLanguage(Locale.ENGLISH);
-                tts.speak("Welcome to jinpao automation contest two thousand nineteen", TextToSpeech.QUEUE_ADD, null);
-                Log.d("SpeakCommand","Follow Me Speak Now");
+                Log.d("SpeakCommand","In Method onDataChange");
+                Map map = (Map)dataSnapshot.getValue();
+                String speakCommand = String.valueOf(map.get("SpeakCommand"));
+                if (speakCommand.equals("1")) {
+                    runMoveGifFace();
+                    tts.setLanguage(Locale.ENGLISH);
+                    tts.speak("Good morning everyone", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("I am the robot, My name is Follow me", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("My job is to be a guide to introduce product information in out product show room", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("When you visit out company , Please let me be a guide for you.", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("Today , welcome to join jinpao automation contest two thousand nineteen", TextToSpeech.QUEUE_ADD, null);
+                } else if (speakCommand.equals("2")) {
+                    runNormalGifFace();
+                } else if (speakCommand.equals("3")) {
+                    runMoveGifFace();
+                    tts.setLanguage(new Locale("th"));
+                    tts.speak("สวัสดีตอนเช้าค่ะ", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("ฉันคือหุ่นยนต์ ฉันชื่อ follow me", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("มีหน้าที่เป็นไกด์พาชมผลิตภัณฑ์ของบริษัท จินป่าว พรีซิชั่น อินดัสทรี่", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("วันหลังมาชมบริษัทเรา ให้ฉันจะพาชมและแนะนำผลิตภัณฑ์ของบริษัทนะคะ", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("วันนี้ยินดีต้อนรับทุกท่านมาร่วมงานของ จินป่าว Automation Contest สองพันสิบเก้า", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("ขออนุญาตส่งไมโครโฟนให้พิธีกรดำเนินการต่อนะคะ ขอบคุณค่ะ", TextToSpeech.QUEUE_ADD, null);
+                } else {
+//                    runNormalGifFace();
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
+
         });
 
-        if (tts.isSpeaking()) {
 
-        }
+
+
+
+
     }
+
 
     public void runNormalGifFace() {
-        gifEye = findViewById(R.id.gifEye);
-        gifMouth = findViewById(R.id.gifMouth);
-        gifEye.setGifFromResource(R.drawable.eyeblink);
-        gifMouth.setGifFromResource(R.drawable.mouth3);
+        Log.d("SpeakCommand","In Method Normal");
+        gifMouth.setVisibility(View.VISIBLE);
+        gifMouthMove.setVisibility(View.GONE);
     }
+
+    public void runMoveGifFace() {
+        Log.d("SpeakCommand","In Method Move");
+        gifMouth.setVisibility(View.GONE);
+        gifMouthMove.setVisibility(View.VISIBLE);
+    }
+
+
 
     @Override
     public void onInit(int status) {
-
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
+
+
 }
