@@ -74,9 +74,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 if (speakCommand.equals("1")) {
                     runMoveGifFace();
                     tts.setLanguage(Locale.ENGLISH);
+                    tts.setSpeechRate((float) 0.9);
                     tts.speak("Good morning everyone", TextToSpeech.QUEUE_ADD, null);
                     tts.speak("I am the robot, My name is Follow me", TextToSpeech.QUEUE_ADD, null);
-                    tts.speak("My job is to be a guide to introduce product information in out product show room", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("My job is to be a guide to introduce product information in our product show room", TextToSpeech.QUEUE_ADD, null);
                     tts.speak("When you visit out company , Please let me be a guide for you.", TextToSpeech.QUEUE_ADD, null);
                     tts.speak("Today , welcome to join jinpao automation contest two thousand nineteen", TextToSpeech.QUEUE_ADD, null);
                 } else if (speakCommand.equals("2")) {
@@ -84,14 +85,15 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 } else if (speakCommand.equals("3")) {
                     runMoveGifFace();
                     tts.setLanguage(new Locale("th"));
+                    tts.setSpeechRate((float) 1);
                     tts.speak("สวัสดีตอนเช้าค่ะ", TextToSpeech.QUEUE_ADD, null);
                     tts.speak("ฉันคือหุ่นยนต์ ฉันชื่อ follow me", TextToSpeech.QUEUE_ADD, null);
-                    tts.speak("มีหน้าที่เป็นไกด์พาชมผลิตภัณฑ์ของบริษัท จินป่าว พรีซิชั่น อินดัสทรี่", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("มีหน้าที่เป็นไกด์พาชมผลิตภัณฑ์ของบริษัท jinpao precision industrial", TextToSpeech.QUEUE_ADD, null);
                     tts.speak("วันหลังมาชมบริษัทเรา ให้ฉันจะพาชมและแนะนำผลิตภัณฑ์ของบริษัทนะคะ", TextToSpeech.QUEUE_ADD, null);
-                    tts.speak("วันนี้ยินดีต้อนรับทุกท่านมาร่วมงานของ จินป่าว Automation Contest สองพันสิบเก้า", TextToSpeech.QUEUE_ADD, null);
+                    tts.speak("วันนี้ยินดีต้อนรับทุกท่านมาร่วมงานของ jinpao Automation Contest สองพันสิบเก้า", TextToSpeech.QUEUE_ADD, null);
                     tts.speak("ขออนุญาตส่งไมโครโฟนให้พิธีกรดำเนินการต่อนะคะ ขอบคุณค่ะ", TextToSpeech.QUEUE_ADD, null);
                 } else {
-//                    runNormalGifFace();
+                    runNormalGifFace();
                 }
             }
 
